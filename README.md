@@ -5,8 +5,8 @@ Setup
 <br />
 <br />
 ```sh
-mkdir DLWorkspace
-cd DLWorkspace/
+mkdir deepHUNT
+cd deepHUNT/
 git init
 git remote add deepHunt https://github.com/easilar/deepHUNT
 git fetch deepHunt
