@@ -3,7 +3,6 @@ Hunts toxic compounds
 
 Setup
 <br />
-<br />
 ```sh
 mkdir deepHUNT
 cd deepHUNT/
