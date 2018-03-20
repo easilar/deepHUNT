@@ -19,5 +19,20 @@ def getMoleculeFromIndex(molecules,index):
 	molecule = molecules[index]
 	return molecule
 
-#def createMoleculeDict(molecule):
-	
+
+class molecule(object):
+
+	def __init__(self, name, ID, Source, H_MFHB, CAS, Cholestasis, classValue, Inchi_key, content):
+		self.name = name
+		self.ID = ID
+		self.Source = Source
+		self.H_MFHB = H_MFHB 
+		self.CAS = CAS
+		self.Cholestasis = Cholestasis
+		self.Class = classValue
+		self.Inchi_key = Inchi_key
+		self.content = content
+
+	def getKeyValuefromMol(self,key):
+		return self.content.split('<'+key+'>')[1].split('\n')[1]
+
