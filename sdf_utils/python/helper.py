@@ -32,3 +32,4 @@ class molecule(object):
 			exec('self.'+key+'=keyval')
 
 	__getKeyValuefromMol = getKeyValuefromMol
+
