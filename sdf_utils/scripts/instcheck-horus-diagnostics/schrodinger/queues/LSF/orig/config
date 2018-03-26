@@ -1,0 +1,27 @@
+# Configuration for LSF job submission
+#
+# The following variables should be defined here:
+#
+# QPATH ..... absolute pathname for the directory where the LSF
+#             commands ('bsub', etc.) are installed.
+# QPROFILE .. absolute pathname for a setup script, which will be
+#               executed before running any queue commands.
+# QSUB ...... the name of the job submission command (typically 'bsub')
+# QDEL ...... the name of the job cancellation command (typically 'bkill')
+# QSTAT ..... the name of the job status command (typically 'bjobs')
+#
+# LICENSE_CHECKING ... support license checking?
+#                      (any non-blank value turns on license-checking)
+#
+# Notes: 
+# 1) Either QPATH or QPROFILE should be specified (but not both).
+# 2) QSUB, QDEL, and QSTAT normally don't need to be changed here.
+#
+# For assistance, please contact help@schrodinger.com
+#
+QPATH=/usr/local/lsf/bin
+QPROFILE=
+QSUB=bsub
+QDEL=bkill
+QSTAT=bjobs
+LICENSE_CHECKING=

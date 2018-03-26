@@ -1,0 +1,62 @@
+
+Using Schrodinger installation in "/var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2"
+
+
+Looking for PDB database files in default location, "/var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2/thirdparty/database/pdb"
+WARNING: The PDB database does not appear to exist.
+If there is a PDB repostory in another location, set the $SCHRODINGER_PDB
+environment variable to the path containing the "data" subdirectory,
+otherwise make sure that web access is enabled to download PDB files.
+
+Blast web queries preferences has not been set. Defaults to Disallowed.
+
+This can be changed in the in the Maestro>Preferences>Jobs>Starting panel.
+
+Preference has not been set as to whether to allow remote Blast queries
+run at NCBI.  Some Blast tests will be skipped.
+
+Using Blast Database from default location
+Blast database directory is /var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2/thirdparty/database/blast
+
+This appears to be a web-based installation of a partial Blast database.
+
+Blast searches within the NR database will not be able to run without
+a full Blast database or allowing remote searching on the NCBI servers.
+You can download a full Blast database (~50GB) by running 
+SCHRODINGER/utilities/update_BLASTDB
+********************************************************************************
+****  ERROR RUNNING BLAST
+Neither Local nor Remote Blast jobs are possible.  Please follow the
+directions to enable either Local or remote jobs.
+********************************************************************************
+
+Looking for Pfam database in default location.  Use the $PSP_HMMERDB 
+environment variable to override this.
+Pfam database direcory is /var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2/thirdparty/database/pfam
+The Pfam database appears to be correctly installed.
+Looking for HMMER program files in default location.
+HMMER program directory is "/var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2/thirdparty/bin/Linux-x86_64/hmmer"
+HMMER version 3.0 installed
+
+
+WARNING: The PsiPred program does not appear to be installed.
+PSIPred installation not found in /var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2/thirdparty/bin/Linux-x86_64/psipred please place it in the default location, /var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2/thirdparty/bin/Linux-x86_64/psipred, or set the the PSP_PSIPRED_DIR environment variable to the location of your psipred installation
+
+Secondary structure predictions will only be able to use the
+bundled SSpro unless PsiPred is downloaded and installed.
+Please consult the "Third-party software" section of the
+Installation Guide for more information, and set the $PSP_PSIPRED_DIR
+environment variable to the path containing the bin and data
+directories if using a non-standard location.
+Thirdparty installation check completed.
+********************************************************************************
+****  Required elements of the Third party suite are not properly 
+installed or configured.  Significant elements of the Schrodinger Suite 
+will not function properly
+********************************************************************************
+
+Web access is required for some features.  Be sure to set the preference
+accordingly in the Maestro>Preferences>Jobs>Starting panel, and use
+"$SCHRODINGER/run" proxy_config.py if a proxy server is required.
+
+Test Jobs and Log Files Written to:/tmp/tmpSy3uXL_schrodinger_check_thirdparty

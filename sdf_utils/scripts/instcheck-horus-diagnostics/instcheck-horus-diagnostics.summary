@@ -1,0 +1,24 @@
+------------------------------------------------------------------------------------------
+                          Schrodinger Installation Check (rev 1.31)
+------------------------------------------------------------------------------------------
+
+Hosts file: /var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2/schrodinger.hosts
+
+        ******    No test jobs were run.  Use the '-test' option to run   ******
+        ******    a quick test job on selected hosts, or '-testall' to    ******
+        ******    run jobs on all hosts.                                  ******
+
+There is only 1 host entry in this file.
+* There are NO host entries for running immediate jobs on remote machines.
+* There are NO host entries for submitting batch jobs.
+
+------------------ -------------------- -------  -----------------------------------------
+Hosts Entry        Check                Result   Notes
+------------------ -------------------- -------  -----------------------------------------
+localhost          hosts file           * OK *   
+------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------
+                                         Comments                                          
+------------------------------------------------------------------------------------------

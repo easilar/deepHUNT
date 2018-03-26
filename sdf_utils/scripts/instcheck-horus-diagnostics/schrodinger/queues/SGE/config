@@ -1,0 +1,23 @@
+# Configuration for SGE job submission
+#
+# The following variables should be defined here:
+#
+# QPATH ..... absolute pathname for the directory where the SGE
+#             commands ('qsub', etc.) are installed.
+# QPROFILE .. absolute pathname for a setup script, which will be
+#               executed before running any queue commands.
+# QSUB ...... the name of the job submission command (typically 'qsub')
+# QDEL ...... the name of the job cancellation command (typically 'qdel')
+# QSTAT ..... the name of the job status command (typically 'qstat')
+#
+# LICENSE_CHECKING ... support license checking?
+#                      (any non-blank value turns on license-checking)
+#
+# For assistance, please contact help@schrodinger.com
+#
+QPATH=
+QPROFILE=/opt/gridengine/default/common/settings.sh
+QSUB=qsub
+QDEL=qdel
+QSTAT=qstat
+LICENSE_CHECKING=

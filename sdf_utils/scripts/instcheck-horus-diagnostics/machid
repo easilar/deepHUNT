@@ -1,0 +1,32 @@
+Date:          Sat Mar 24 18:13:30 2018
+SCHRODINGER:   /var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2
+uname -a :     Linux horus 4.4.0-112-generic #135-Ubuntu SMP Fri Jan 19 11:48:36 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+FQDN:          horus.pch.univie.ac.at
+IP address:    131 130 129 195
+Main memory:   128812 MB
+Free disk:     317796 MB
+Product:       aacg-v12011-Linux-x86_64
+Product:       bioluminate-v19011-Linux-x86_64
+Product:       canvas-v24011-Linux-x86_64
+Product:       combiglide-v37011-Linux-x86_64
+Product:       desmond-v42011-Linux-x86_64
+Product:       epik-v32011-Linux-x86_64
+Product:       impact-v67011-Linux-x86_64
+Product:       jaguar-v88011-Linux-x86_64
+Product:       knime-v30011-Linux-x86_64
+Product:       macromodel-v108011-Linux-x86_64
+Product:       maestro-v102011-Linux-x86_64
+Product:       mcpro-v38011-Linux-x86_64
+Product:       mmshare-v30011-Linux-x86_64
+Product:       phase-v43011-Linux-x86_64
+Product:       psp-v40011-Linux-x86_64
+Product:       qikprop-v44011-Linux-x86_64
+Host ID:       0cc47a8226df
+Machine name:  horus
+OS:            Ubuntu 16.04.2 LTS
+CPU:           Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz
+Processors:    56
+Memory:        135069859 kB
+Swap:          137307877 kB
+kernel:        4.4.0-112-generic
+glibc:         Unknown

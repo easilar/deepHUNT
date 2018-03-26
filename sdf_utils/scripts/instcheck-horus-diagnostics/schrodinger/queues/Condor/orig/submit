@@ -1,0 +1,105 @@
+#!/usr/bin/env perl
+#
+use strict;
+use warnings;
+
+## Read configuration file
+##
+my $QPATH = '/opt/condor/current/bin';
+my $QPROFILE;
+my $QSUB =  'condor_submit';
+
+(my $curdir = `echo $0`) =~ s|/[^/]*$||;
+open CONFIG, "$curdir/config"
+  or die "ERROR: unable to open $curdir/config\n";
+while (<CONFIG>) {
+  chomp;
+  my ($arg, $value) = split /=/;
+  next unless $arg;
+  $value |= "";
+  $QPATH = $value if $arg eq 'QPATH';
+  $QPROFILE = $value if $arg eq 'QPROFILE';
+  $QSUB = $value if $arg eq 'QSUB';
+}
+
+if ($QPROFILE) {
+  die "ERROR: The QPROFILE setting is not supported.\nUse QPATH in $curdir/config instead.\n";
+}
+
+$ENV{PATH} = "$QPATH:$ENV{PATH}" if $QPATH;
+
+## Commandline arguments
+
+my $script = shift;
+
+my $SCRIPT_IN;
+if ($script eq '-') {
+  open($SCRIPT_IN, "<&=STDIN") or die "ERROR: Can't alias STDIN\n"; 
+} else {
+  open($SCRIPT_IN, "< $script") or die "ERROR: Can't open $script\n";
+}
+
+## Create condor_submit description file
+
+my $cached_script = "/tmp/inscript_$$.sh";
+my $subout = "/tmp/subout_$$.txt";
+
+open SCRIPT_OUT, ">$cached_script" or die "ERROR: Can't open $cached_script: $!\n";
+
+# grab #SUBMIT lines from the batch script
+
+my $header = 1;
+my @submit_commands = ();
+while (defined (my $line = <$SCRIPT_IN>)) {
+  if ($header) {
+    if ($line =~ /^#SUBMIT /) {
+      (my $command = $line) =~ s/^#SUBMIT //;
+      push @submit_commands, $command;
+    } else {
+      $header = 0 unless $line =~ /^#!/;
+    }
+  }
+  print SCRIPT_OUT $line;
+}
+close SCRIPT_OUT;
+chmod(0775, $cached_script) 
+  or print "WARNING: Unable to make file '$cached_script' executable\n";
+
+print ">> $QPATH/$QSUB -s > $subout\n";
+open SUBMIT, "|$QPATH/$QSUB -s > $subout" or die "ERROR: Can't open pipe to $QSUB: $!";
+print SUBMIT <<ENDSUB;
+# file name:  $cached_script
+# Condor_submit description file for Schrodinger CycleCloud job
+Universe        = vanilla
+Executable      = $cached_script
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+notification    = NEVER
+on_exit_remove = (ExitBySignal == False) || (ExitCode != 99)
+kill_sig = SIGUSR1
+Environment     = "CONDOR_JOBID=\$(Cluster).\$(Process)"
+ENDSUB
+
+foreach my $command (@submit_commands) {
+  print SUBMIT $command;
+}
+print SUBMIT "Queue\n";
+close SUBMIT;
+my $exitcode = $?;
+
+if ($exitcode == 0) {
+  open SUBOUT, "$subout" or die "ERROR: Can't open '$subout': $!";
+  my $cluster = -1;
+  while (<SUBOUT>) {
+    $cluster = $1 if /submitted to cluster (\d+)./;
+    if ($cluster > -1) {
+      print "BatchId: $cluster\n";
+      last;
+    }
+  }
+  close SUBOUT;
+}
+
+unlink $cached_script;
+unlink $subout;
+exit $exitcode;

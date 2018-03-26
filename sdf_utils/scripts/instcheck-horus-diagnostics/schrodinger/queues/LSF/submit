@@ -1,0 +1,105 @@
+#!/bin/sh
+#
+#  Wrapper script for LSF job submission
+#
+#set -x  # debug tracing
+qsubout=.qsub$$
+
+HOST=`hostname`
+PATH=$PATH:/usr/bin:/bin:/usr/sbin:/usr/bsd:/usr/local/bin
+
+# Get QPATH and QSUB settings from the config file
+curdir=`echo "$0" | sed -e 's#/[^/]*$##'`
+if [ -f "$curdir/config" ]; then
+  . "$curdir/config"
+else
+  echo "ERROR: The $curdir/config file is missing."
+  exit 1
+fi
+
+if [ -n "$QPROFILE" ]; then
+  if [ -f "$QPROFILE" ]; then
+    . "$QPROFILE"
+  else 
+    echo "ERROR: Setup script \"$QPROFILE\" not found."
+    exit 1
+  fi
+fi 
+
+if [ -n "$QPATH" ]; then
+  PATH=$QPATH:$PATH
+fi
+
+# Verify commandline args
+if [ $# -gt 0 ]; then
+  script="$1"
+  shift
+else
+  echo "ERROR: Usage:   submit <script> [<options>]"
+  exit 1
+fi
+
+ARGS=""
+QLOG=""
+LICENSE_ARGS=""
+DURATION=""
+if [ -n "$LICENSE_CHECKING" ]; then
+  DURATION=":duration=1"
+fi
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -lic) LICENSE_ARG=`echo $2 | sed 's!:!=!g'`
+          LICENSE_ARGS="$LICENSE_ARGS $LICENSE_ARG$DURATION"
+          shift 2 ;;
+      -o) QLOG="$2"
+          shift 2 ;;
+       *) ARGS="$ARGS \"$1\"" 
+          shift ;;
+  esac
+done
+
+if [ -n "$QLOG" ]; then
+  touch "$QLOG" 2>&- || QLOG="/dev/null"
+  ARGS="$ARGS -o '$QLOG'"
+fi
+
+if [ -n "$LICENSE_CHECKING" -a -n "$LICENSE_ARGS" ]; then
+  LICENSE_ARGS=`echo $LICENSE_ARGS | sed 's! !,!g'`
+  LICENSE_ARGS="-R 'rusage[$LICENSE_ARGS]'"
+else
+  LICENSE_ARGS=""
+fi
+  
+if [ "$script" != "-" -a ! -f "$script" ]; then
+  echo "ERROR: File not found: \"$script\""
+  exit 1
+fi
+	
+if [ -z "`which $QSUB 2>/dev/null`" -a ! -x "$QPATH/$QSUB" -a ! -x "$QSUB" ]; then
+  echo "ERROR: Submission command \"$QSUB\" on host \"$HOST\" not found."
+  echo "ERROR: (i) Is the Host: field in your schrodinger.hosts entry correct?"
+  echo "ERROR: (ii) Are the QPATH and QSUB settings in $curdir/config correct?"
+  exit 1
+fi
+	
+# Submit job
+if [ "$script" = "-" ]; then
+  echo ">> $QSUB $QARGS $ARGS $LICENSE_ARGS -L /bin/sh > $qsubout"
+  eval $QSUB $QARGS $ARGS $LICENSE_ARGS -L /bin/sh > $qsubout
+else
+  echo ">> $QSUB $QARGS $ARGS $LICENSE_ARGS -L /bin/sh < \"$script\" > $qsubout"
+  eval $QSUB $QARGS $ARGS $LICENSE_ARGS -L /bin/sh < "$script" > $qsubout
+fi
+
+# Report outcome of job submission
+batchid=`grep 'is submitted' $qsubout | awk '{print $2}'`
+if [ -n "$batchid" ]; then
+    batchid=`echo "$batchid" | sed 's#[<>]##g'`
+    echo "BatchId: $batchid"
+    rm $qsubout
+    exit 0
+else
+    cat $qsubout | sed 's/\(.*\)/ERROR: \1/'
+    rm $qsubout
+    exit 1
+fi

@@ -1,0 +1,28 @@
+[
+  {
+    "checks" : [
+      {
+        "check" : "hosts file",
+        "advice" : "No general problems were found in the hosts file.",
+        "severity" : "ok",
+        "message" : ""
+      }
+    ],
+    "entry" : "",
+    "queue" : "",
+    "cpus" : ""
+  },
+  {
+    "checks" : [
+      {
+        "check" : "hosts file",
+        "advice" : "No problems were found in the hosts-file entry for localhost.",
+        "severity" : "ok",
+        "message" : ""
+      }
+    ],
+    "entry" : "localhost",
+    "queue" : "",
+    "cpus" : "1"
+  }
+]

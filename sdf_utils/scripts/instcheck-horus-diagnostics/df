@@ -1,0 +1,20 @@
+Filesystem                         Size  Used Avail Use% Mounted on
+udev                                63G     0   63G   0% /dev
+tmpfs                               13G  1.3G   12G  10% /run
+/dev/sda1                          975G  136G  789G  15% /
+tmpfs                               63G  200K   63G   1% /dev/shm
+tmpfs                              5.0M  4.0K  5.0M   1% /run/lock
+tmpfs                               63G     0   63G   0% /sys/fs/cgroup
+/dev/sdb1                          1.1T   71M  1.1T   1% /jobrun
+/dev/sdc1                          3.6T  1.3T  2.2T  39% /backup
+tmpfs                               13G   36K   13G   1% /run/user/108
+tmpfs                               13G  4.0K   13G   1% /run/user/10026
+131.130.129.240:/var/opt/programs  917G  560G  311G  65% /var/opt/programs
+tmpfs                               13G  4.0K   13G   1% /run/user/10008
+tmpfs                               13G  4.0K   13G   1% /run/user/10006
+tmpfs                               13G     0   13G   0% /run/user/10004
+tmpfs                               13G  4.0K   13G   1% /run/user/10016
+131.130.129.240:/backup             18T   12T  5.4T  69% /zeus
+tmpfs                               13G     0   13G   0% /run/user/10030
+tmpfs                               13G  4.0K   13G   1% /run/user/10031
+tmpfs                               13G  4.0K   13G   1% /run/user/10025

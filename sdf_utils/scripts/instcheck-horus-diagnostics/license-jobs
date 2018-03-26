@@ -1,0 +1,71 @@
+######## Server /var/opt/programs/SCHRODINGER/schrodinger2015/schrodinger2015-2/license
+Product & job type                  	      Jobs
+ADME, P450 Som                      	        34
+CANVAS                              	        50
+COMBIGLIDE, Grid Generation         	        34
+COMBIGLIDE, Library Generation      	        50
+COMBIGLIDE, Protein Prep            	        34
+COMBIGLIDE, Reagent Prep            	        34
+CORE, Hopping Isoteric Matchiung    	         6
+CORE, Hopping Ligand Based          	         6
+DESMOND                             	        68
+EPIK                                	        34
+GLIDE, Grid Generation              	        34
+GLIDE, Primex Docking               	        34
+GLIDE, Protein Prep                 	        34
+GLIDE, SP Docking                   	         8
+GLIDE, XP Descriptors               	         8
+GLIDE, XP Docking                   	         8
+IMPACT                              	        34
+JAGUAR                              	        17
+JAGUAR, PKA                         	        17
+KNIME                               	        50
+LIGPREP, Desalter                   	        34
+LIGPREP, Ionizer                    	      4350
+LIGPREP, Ligparse                   	        34
+LIGPREP, Neutralizer                	        34
+LIGPREP, Premin Bmin                	        34
+LIGPREP, Ring Conf                  	        34
+LIGPREP, Stereoizer                 	        34
+LIGPREP, Tautomerizer               	        34
+MACROMODEL                          	        17
+MACROMODEL, Autoref                 	        17
+MACROMODEL, Confgen                 	        17
+MACROMODEL, Csearch Mbae            	        17
+MAESTRO, Unix                       	      1000
+MMLIBS                              	      4350
+PHASE, CL Feature                   	         6
+PHASE, CL File Search               	        34
+PHASE, CL Fqsar                     	         6
+PHASE, CL Hypocluster               	         6
+PHASE, CL Inactive                  	        34
+PHASE, CL Multiqsar                 	        34
+PHASE, CL Partition                 	        34
+PHASE, CL Phasedb Confsites         	        34
+PHASE, CL Phasedb Convert           	        34
+PHASE, CL Phasedb Manage            	        34
+PHASE, CL Phasedb Search            	        34
+PHASE, CL Qsar                      	         6
+PHASE, CL Scoring                   	        34
+PHASE, Create Model                 	         6
+PHASE, DPM Build Qsar Model         	        34
+PHASE, DPM Common Pharmacaphore     	        34
+PHASE, DPM Create Sites             	         6
+PHASE, DPM Ligprep Clean Structures 	        34
+PHASE, DPM Ligprep Generate Conformers 	        17
+PHASE, DPM Score Hypotheses         	        34
+PHASE, DPM Score Inactives          	        34
+PHASE, FM Find Matches              	        34
+PHASE, MD Add Structures            	        34
+PHASE, MD Create sites              	        34
+PRIMEX                              	         4
+PRIME, CM Build Membrane            	         4
+PRIME, CM Build Structure           	         4
+PRIME, CM Edit Alignment            	         4
+PRIME, CM Struct Align              	        34
+PRIME, Threading Search             	         4
+QIKPROP                             	        17
+QSITE                               	        17
+SITEMAP                             	        34
+SOM                                 	         4
+STRIKE                              	        34

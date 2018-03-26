@@ -1,0 +1,58 @@
+--- MonitorJobs
+---
+NextRun: 0
+WorkRemaining: 0
+--- CheckOrphans
+---
+IneligibleJobs:
+  - horus-0-5ab1376b
+  - horus-0-5ab1376d
+  - horus-0-5ab1376f
+  - horus-0-5ab13772
+  - horus-0-5ab13774
+  - horus-0-5ab13776
+  - horus-0-5ab13778
+  - horus-0-5ab1377a
+NextRun: 1521909437
+NextRunDelay: 300
+WorkRemaining: 0
+--- CheckSubmitted
+---
+IneligibleJobs:
+  - horus-0-5ab13766
+  - horus-0-5ab1376b
+  - horus-0-5ab1376d
+  - horus-0-5ab1376f
+  - horus-0-5ab13772
+  - horus-0-5ab13774
+  - horus-0-5ab13776
+  - horus-0-5ab13778
+  - horus-0-5ab1377a
+NextRun: 1521909737
+NextRunDelay: 600
+SubmittedThreshold: 300
+WorkRemaining: 0
+--- CheckStranded
+---
+DeathThreshold: 7200
+IneligibleJobs:
+  - horus-0-5ab13766
+  - horus-0-5ab1376b
+  - horus-0-5ab1376d
+  - horus-0-5ab1376f
+  - horus-0-5ab13772
+  - horus-0-5ab13774
+  - horus-0-5ab13776
+  - horus-0-5ab13778
+  - horus-0-5ab1377a
+NextRun: 1521909437
+NextRunDelay: 300
+RecoveryLimit: 300
+RecoveryQueue: []
+StaleThreshold: 2592000
+StrandedThreshold: 600
+WorkRemaining: 0
+--- UpdateDbIndex
+---
+NextRun: 1521909737
+WorkRemaining: 0

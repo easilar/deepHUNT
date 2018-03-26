@@ -1,0 +1,91 @@
+#!/bin/sh
+#
+#  Wrapper script for Torque job submission
+#
+#set -x
+qsubout=.qsub$$
+
+HOST=`hostname`
+PATH=$PATH:/usr/bin:/bin:/usr/sbin:/usr/bsd:/usr/local/bin
+
+# establish path and command name
+QPATH=/usr/local/pbs/bin
+QSUB=qsub
+
+curdir=`echo "$0" | sed -e 's#/[^/]*$##'`
+if [ -f "$curdir/config" ]; then
+  . "$curdir/config"
+fi
+
+if [ -n "$QPROFILE" ]; then
+  if [ -f "$QPROFILE" ]; then
+    . "$QPROFILE"
+  else 
+    echo "ERROR: Setup script \"$QPROFILE\" not found."
+    exit 1
+  fi
+fi 
+
+if [ -n "$QPATH" ]; then
+  PATH=$QPATH:$PATH
+fi
+
+# Verify commandline args
+if [ $# -gt 0 ]; then
+  script="$1"
+  shift
+else
+  echo "ERROR: Usage:   submit <script> [<options>]"
+  exit 1
+fi
+
+ARGS=""
+QLOG=""
+LICENSE_ARGS=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -lic) # LICENSE_ARGS="$LICENSE_ARGS -l $2"
+          shift 2 ;;
+      -o) QLOG="$2"
+          shift 2 ;;
+       *) ARGS="$ARGS \"$1\""
+          shift ;;
+  esac
+done
+
+if [ -n "$QLOG" ]; then
+  touch "$QLOG" 2>&- || QLOG="/dev/null"
+  ARGS="$ARGS -o '$QLOG'"
+fi
+
+if [ -z "$LICENSE_CHECKING" ]; then
+  LICENSE_ARGS=""
+fi
+  
+if [ "$script" != "-" -a ! -f "$script" ]; then
+  echo "ERROR: File not found: \"$script\""
+  exit 1
+fi
+
+if [ -z "`which $QSUB 2>/dev/null`" -a ! -x "$QPATH/$QSUB" -a ! -x "$QSUB" ]; then
+  echo "ERROR: Submission command \"$QSUB\" on host \"$HOST\" not found."
+  echo "ERROR: (i) Is the Host: field in your schrodinger.hosts entry correct?"
+  echo "ERROR: (ii) Are the QPATH and QSUB settings in $curdir/config correct?"
+  exit 1
+fi
+	
+# Submit job
+echo ">> $QSUB $QARGS $ARGS $LICENSE_ARGS -S /bin/sh \"$script\" > $qsubout"
+eval $QSUB $QARGS $ARGS $LICENSE_ARGS -S /bin/sh \"$script\" > $qsubout
+
+# Report outcome of job submission
+batchid=`head -1 $qsubout | awk '{print $1}'`
+if [ -n "$batchid" ]; then
+    echo "BatchId: $batchid"
+    rm $qsubout
+    exit 0
+else
+    cat $qsubout | sed 's/\(.*\)/ERROR: \1/'
+    rm $qsubout
+    exit 1
+fi
