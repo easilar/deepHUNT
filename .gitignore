@@ -13,6 +13,8 @@
 # Data #
 *.root
 *.pkl
+*.png
+*.jpeg
 #python specific
 __init__.*
 
@@ -34,6 +36,10 @@ __init__.*
 *.log
 *.sql
 *.sqlite
+
+# Molecule Images #
+###################
+mol_*_*_*
 
 # OS generated files #
 ######################
