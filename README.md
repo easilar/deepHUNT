@@ -14,5 +14,11 @@ git commit -am "ini commit"
 git push deepHunt localmaster
 ```
 
-
+Runing scripts:
+<br />
+```sh
+cd deepHUNT/
+ipython
+execfile('sdf_utils/scripts/categorizeFile.py')
+```
 
