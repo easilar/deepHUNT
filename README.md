@@ -21,4 +21,18 @@ cd deepHUNT/
 ipython
 execfile('sdf_utils/scripts/categorizeFile.py')
 ```
+Once the sdf files are ready you can run maestro:
+<br />
+```sh
+maestro17
+```
+in maestro: File -> Import Structures -> choose .sdf files <br />
+Now you have all molecules in the project table. You can view project table Window -> Project Table <br />
+Next step is to run the python scripts on all the molecules: Window -> Python Shell <br />
+This will open an ipython shell <br />
+<br />
+```sh
+execfile('maestro_utils/summaryScript.py')
+```
+
 
