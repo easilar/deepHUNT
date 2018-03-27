@@ -4,7 +4,7 @@ tag = "toxic"
 
 #IO
 sizeX , sizeY = 28, 28
-dataset = "images"
+dataset = "../maestro_utils/images/"
 pickle_path = "pickles/data_labels_"+str(sizeX)+"_pkl" 
 picle_dir = "pickles"
 if not os.path.exists(picle_dir):
