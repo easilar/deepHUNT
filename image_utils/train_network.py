@@ -58,7 +58,7 @@ H = model.fit_generator(aug.flow(trainX, trainY, batch_size=conf.BS),
 
 # save the model to disk
 print("[INFO] serializing network...")
-model.save(conf.models_dir+"/"+conf.tag+"no"+conf.tag+str(conf.sizeX)+".model")
+model.save(conf.models_dir+"/"+conf.tag+"no"+conf.tag+str(conf.sizeX)+"noPh.model")
 
 # plot the training loss and accuracy
 plots =[\

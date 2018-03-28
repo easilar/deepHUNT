@@ -14,6 +14,6 @@ def Plot_lossAccuracy( plots , tag, mplot):
     plt.xlabel("Epoch #")
     plt.ylabel("Loss/Accuracy")
     plt.legend(loc="lower left")
-    plt.savefig(mplot+".png")
+    #plt.savefig(mplot+".png")
     plt.savefig(mplot+".pdf")
     print mplot , " is saved"

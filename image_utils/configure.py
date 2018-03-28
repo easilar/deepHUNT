@@ -2,10 +2,15 @@ import os , sys
 #what to catecorise
 tag = "toxic"
 
+#original dataset
+dataset_sdf_file = 'sdf_utils/data/Eleni_mulliner_curated_w_ID.sdf' 
+nOrig_toxic = 518
+nOrig_nontoxic = 1323
+
 #IO
 sizeX , sizeY = 28, 28
-dataset = "images"
-pickle_path = "pickles/data_labels_"+str(sizeX)+"_pkl" 
+dataset = "data/images_noPh/"
+pickle_path = "pickles/data_labels_"+str(sizeX)+"_from"+dataset.split('/')[1]+"_pkl" 
 picle_dir = "pickles"
 if not os.path.exists(picle_dir):
       os.makedirs(picle_dir)
