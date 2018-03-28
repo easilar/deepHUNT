@@ -16,4 +16,4 @@ def Plot_lossAccuracy( plots , tag, mplot):
     plt.legend(loc="lower left")
     plt.savefig(mplot+".png")
     plt.savefig(mplot+".pdf")
-print mplot , " is saved"
+    print mplot , " is saved"

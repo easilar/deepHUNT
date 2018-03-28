@@ -19,12 +19,14 @@ def imageToarray(imagePath, sizeX, sizeY):
         return image
 
 def makeDataAndLabels(dataset, tag , sizeX , sizeY):
-
+    print 'now in makeDataAndLabels'
     data = []
     labels = []
 
     # grab the image paths and randomly shuffle them
     imagePaths = sorted(list(paths.list_images(dataset)))
+    #imagePaths = sorted([os.path.join(dataset, f) for f in os.listdir(dataset)])
+    print 'will be used these image paths:', imagePaths
     random.seed(42)
     random.shuffle(imagePaths)
 
