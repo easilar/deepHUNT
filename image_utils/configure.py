@@ -28,7 +28,7 @@ if not os.path.exists(plot_dir):
 
 # initialize the number of epochs to train for, initial learning rate,
 # and batch size
-EPOCHS = 10
+EPOCHS = 2
 INIT_LR = 1e-3
 BS = 32
 

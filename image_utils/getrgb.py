@@ -19,7 +19,7 @@ from keras.layers.convolutional import MaxPooling2D
 from keras.models import Sequential
 
 model = Sequential()
-model.add(Conv2D(10, (10, 10), padding="same", input_shape=image.shape))
+model.add(Conv2D(5, (10, 10), padding="same", input_shape=image.shape))
 toxic_batch = np.expand_dims(image,axis=0)
 conv_toxic = model.predict(toxic_batch)
 
@@ -28,7 +28,7 @@ print image.shape
 
 plt.figure()
 plt.imshow(image)
-plt.savefig("tests/toxic_mol_mol1476_3700_0_45_256t256_Conv.jpeg")
+plt.savefig("tests/toxic_mol_mol1476_3700_0_45_256t256_Conv10b10_filt5.jpeg")
 
 
 
