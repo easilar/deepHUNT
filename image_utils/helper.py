@@ -15,14 +15,14 @@ def imageToarray(imagePath, sizeX, sizeY):
 	image = cv2.imread(imagePath)
         print "image will be resized:" , sizeX , sizeY
 	image = cv2.resize(image, (sizeX, sizeY))
-	image = img_to_array(image)
+	#image = img_to_array(image) #dtype=uint8 -> dtype=float32
         return image
 
 def makeDataAndLabels(dataset, tag , sizeX , sizeY):
     print 'now in makeDataAndLabels'
     data = []
     labels = []
-
+    file_names = []
     # grab the image paths and randomly shuffle them
     imagePaths = sorted(list(paths.list_images(dataset)))
     #imagePaths = sorted([os.path.join(dataset, f) for f in os.listdir(dataset)])
@@ -35,7 +35,9 @@ def makeDataAndLabels(dataset, tag , sizeX , sizeY):
         print "image path:" , imagePath
 	image = imageToarray(imagePath, sizeX, sizeY)
         data.append(image)
-
+	file_name = imagePath.split('/')[4]
+	print 'file_name' , file_name
+	file_names.append(file_name)
 	# extract the class label from the image path and update the labels
 	label = imagePath.split(os.path.sep)[-2]
         print "label 1:" , label
@@ -43,14 +45,15 @@ def makeDataAndLabels(dataset, tag , sizeX , sizeY):
         print "label 2:" , label
 	labels.append(label)
 
-    data = np.array(data, dtype="float") / 255.0
+    data = np.array(data, dtype="float32") / 255.0
     labels = np.array(labels)
 
-    return data , labels
+    return data , labels , file_names
 
-def makePickle(data , labels, pickle_path):
+def makePickle(data , labels, file_names , pickle_path):
 	dLs_dict = {}
 	dLs_dict["data"] = data
 	dLs_dict["labels"] = labels
+	dLs_dict["file_names"] = file_names
 	pickle.dump(dLs_dict,file(pickle_path,'w'))
 	return

@@ -12,37 +12,49 @@ from schrodinger import surface
 def rotate_by(by = 90):
 	maestro.command("rotate y=%d" % by)
 
-def savePng(nrow , i=-1, angle=0):
+def savePng(inipath):
 	#Capture the current main structure window and save to an image file.
-	maestro.command('saveimage format=%s %s' % ('jpeg', 'images_noPh/not_toxic/mol_'+str(nrow)+'_'+str(i)+'_'+str(angle)))
-	print 'image saved: ' , 'images_noPh/not_toxic/mol_'+str(nrow)+'_'+str(i)+'_'+str(angle)
+	maestro.command('saveimage format=%s %s' % ('jpeg', inipath))
+	print 'image saved: ' , inipath
+
+def makePath(inipath, name):
+	return '/'.join([inipath,name])
 
 def makeName(*args):
-	return '_'.join(str(k) for k in args if k is not None)
+	return '_'.join([str(k) for k in args if k is not None])
 
 #get the project table
 pt = maestro.project_table_get()
 print 'length  of all rows in the project table:' , len(pt.all_rows)
-
+inipath = '../data/images_noPh/not_toxic'
+if not os.path.exists(inipath):
+	os.makedirs(inipath)
 coloring = surface.ColorBy.partial_charge
 surfStyle = surface.Style.dot
 nStep = 8 
 angle = 45 # angle for each step
 iterable = pt.all_rows
 prefix = 'Surf'
+generate_surface = False
 
 for row in iterable:
 	row.includeOnly()
+	title = row.title
 	nrow = row.row_number
 	print 'number of current row: ' , nrow
-	savePng(nrow)	
+	save_name = makeName('mol',title,nrow,-1,0)
+	fin_path = makePath(inipath, name = save_name)
+	savePng(fin_path)
 	sName = makeName(prefix, nrow)
-	row.newMolecularSurface(sName)
-	print 'new surface is name: ', row.surface[sName].name
-	surf = row.surface[sName]
-	surf.setColoring(coloring)
-	surf.style = surface.Style.dot
-	#maestro.redraw()
+	if generate_surface:
+		row.newMolecularSurface(sName)
+		print 'new surface is name: ', row.surface[sName].name
+		surf = row.surface[sName]
+		surf.setColoring(coloring)
+		surf.style = surface.Style.dot
+		maestro.redraw()
 	for i in range(nStep):
 		rotate_by(angle)
-		savePng(nrow,i,angle)	
+		save_name = makeName('mol',title,nrow,i,angle)
+		fin_path = makePath(inipath, name = save_name)
+		savePng(fin_path)

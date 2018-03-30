@@ -8,8 +8,8 @@ nOrig_toxic = 518
 nOrig_nontoxic = 1323
 
 #IO
-sizeX , sizeY = 28, 28
-dataset = "data/images_noPh/"
+sizeX , sizeY = 256, 256
+dataset = "../data/images_noPh/"
 pickle_path = "pickles/data_labels_"+str(sizeX)+"_from"+dataset.split('/')[1]+"_pkl" 
 picle_dir = "pickles"
 if not os.path.exists(picle_dir):
