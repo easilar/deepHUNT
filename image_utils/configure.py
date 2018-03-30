@@ -10,7 +10,7 @@ nOrig_nontoxic = 1323
 #IO
 sizeX , sizeY = 256, 256
 dataset = "../data/images_noPh/"
-pickle_path = "pickles/data_labels_"+str(sizeX)+"_from"+dataset.split('/')[1]+"_pkl" 
+pickle_path = "pickles/data_labels_"+str(sizeX)+"_from"+dataset.split('/')[2]+"_pkl" 
 picle_dir = "pickles"
 if not os.path.exists(picle_dir):
       os.makedirs(picle_dir)
