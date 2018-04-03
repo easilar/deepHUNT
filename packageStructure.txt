@@ -1,0 +1,39 @@
+.
+├── data
+│   ├── images_noPh
+│   │   ├── not_toxic
+│   │   └── toxic
+│   └── images_noPh_rest
+│       ├── not_toxic
+│       └── toxic
+├── image_utils
+│   ├── figures
+│   ├── models
+│   ├── pickles
+│   └── tests
+├── ligpreps
+│   ├── ligprep_2
+│   ├── ligprep_3
+│   ├── ligprep_4
+│   ├── ligprep_5
+│   ├── ligprep_6
+│   ├── ligprep_test1
+│   └── ligprep_with_Default
+├── maestro_utils
+├── projects
+│   ├── Notoxic_ondefault_doNotchange.prj
+│   │   └── jobs
+│   ├── Notoxic_ondefault_epik_Phrage7pm0p5.prj
+│   ├── testsOn10Mols.prj
+│   │   └── jobs
+│   ├── toxic_ondefault_doNotchange.prj
+│   │   └── jobs
+│   └── toxic_ondefault_epik_Phrage7pm0p5.prj
+├── sdf_utils
+│   ├── data
+│   │   └── categorized
+│   ├── python
+│   └── scripts
+│       └── instcheck-horus-diagnostics
+└── test
+
