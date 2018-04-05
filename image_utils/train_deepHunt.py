@@ -7,11 +7,9 @@ matplotlib.use("Agg")
 
 # import the necessary packages
 from keras.optimizers import Adam
-from keras import callbacks
 from keras.callbacks import TensorBoard
 from keras import metrics
-from keras.preprocessing.image import ImageDataGenerator
-from keras.preprocessing.image import img_to_array
+from keras.preprocessing.image import ImageDataGenerator , img_to_array
 from sklearn.model_selection import train_test_split
 from keras.utils import to_categorical
 from deepHunt import deepHunt
