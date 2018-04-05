@@ -80,12 +80,12 @@ print("[INFO] serializing network...")
 model.save(conf.models_dir+"/"+conf.tag+"no"+conf.tag+str(conf.sizeX)+"noPh.model")
 
 # plot the training loss and accuracy
-plots =[\
-        {"label":"train_loss", "n":conf.EPOCHS ,"plot":H.history["loss"]      ,"color":"r"},
-        {"label":"val_loss"  , "n":conf.EPOCHS ,"plot":H.history["val_loss"]  ,"color":"g"},
-        {"label":"train_acc" , "n":conf.EPOCHS ,"plot":H.history["acc"]       ,"color":"b"},
-        {"label":"val_acc"   , "n":conf.EPOCHS ,"plot":H.history["val_acc"]   ,"color":"c"},
-        ]
-
-Plot_lossAccuracy( plots , conf.tag , conf.plot)
+#plots =[\
+#	{"label":"train_loss", "n":conf.EPOCHS ,"plot":H.history["loss"]      ,"color":"r"},
+#	{"label":"val_loss"  , "n":conf.EPOCHS ,"plot":H.history["val_loss"]  ,"color":"g"},
+#	{"label":"train_acc" , "n":conf.EPOCHS ,"plot":H.history["acc"]       ,"color":"b"},
+#	{"label":"val_acc"   , "n":conf.EPOCHS ,"plot":H.history["val_acc"]   ,"color":"c"},
+#	]
+#
+#Plot_lossAccuracy( plots , conf.tag , conf.plot)
 
