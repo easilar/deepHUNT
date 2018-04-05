@@ -58,29 +58,22 @@ model = deepHunt.build(width=conf.sizeX, height=conf.sizeY, depth=3, classes=2)
 opt = Adam(lr=conf.INIT_LR, decay=conf.INIT_LR / conf.EPOCHS) #optimizer
 
 model.compile(loss="binary_crossentropy", optimizer=opt,
-	metrics=["accuracy",metrics.mae,metrics.categorical_accuracy,'binary_accuracy'])
-
+	metrics=["accuracy",metrics.mae,metrics.categorical_accuracy,'binary_accuracy',precision , sensitivity, specificity, accuracy, bal_acc, fpr, fnr, fmeasure, mcc, youden, AUC, gmean])
 
 #tbCallBack = callbacks.TensorBoard(log_dir='logs/log_noPh, histogram_freq=0,  
 #          write_graph=True, write_images=True)
-tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()),histogram_freq=1,write_graph=True,)
+tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()),histogram_freq=1,write_graph=True)
 tensorboard.set_model(model)
 
 # train the network
 print("[INFO] training network...")
-#H = model.fit_generator(aug.flow(trainX, trainY, batch_size=conf.BS),
-#	validation_data=(testX, testY),
-#	steps_per_epoch=len(trainX) // conf.BS,
-#	epochs=conf.EPOCHS,
-#	verbose=1,
-#	callbacks=[tensorboard])
+model.fit_generator(aug.flow(trainX, trainY, batch_size=conf.BS),
+	validation_data=(testX, testY),
+	steps_per_epoch=len(trainX) // conf.BS,
+	epochs=conf.EPOCHS,
+	verbose=1,
+	callbacks=[tensorboard])
 
-H = model.fit(aug.flow(trainX, trainY, batch_size=conf.BS),
-        validation_data=(testX, testY),
-        steps_per_epoch=len(trainX) // conf.BS,
-        epochs=conf.EPOCHS,
-        verbose=1,
-        callbacks=[tensorboard])
 
 # save the model to disk
 print("[INFO] serializing network...")
