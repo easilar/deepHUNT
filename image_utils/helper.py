@@ -13,9 +13,9 @@ import pickle
 
 def imageToarray(imagePath, sizeX, sizeY):
 	image = cv2.imread(imagePath)
-        print "image will be resized:" , sizeX , sizeY
+        #print "image will be resized:" , sizeX , sizeY
 	image = cv2.resize(image, (sizeX, sizeY))
-	#image = img_to_array(image) #dtype=uint8 -> dtype=float32
+	image = img_to_array(image) #dtype=uint8 -> dtype=float32
         return image
 
 def makeDataAndLabels(dataset, tag , sizeX , sizeY):
@@ -26,23 +26,23 @@ def makeDataAndLabels(dataset, tag , sizeX , sizeY):
     # grab the image paths and randomly shuffle them
     imagePaths = sorted(list(paths.list_images(dataset)))
     #imagePaths = sorted([os.path.join(dataset, f) for f in os.listdir(dataset)])
-    print 'will be used these image paths:', imagePaths
+    #print 'will be used these image paths:', imagePaths
     random.seed(42)
     random.shuffle(imagePaths)
 
     for imagePath in imagePaths:
 	# load the image, pre-process it, and store it in the data list
-        print "image path:" , imagePath
+        #print "image path:" , imagePath
 	image = imageToarray(imagePath, sizeX, sizeY)
         data.append(image)
 	file_name = imagePath.split('/')[4]
-	print 'file_name' , file_name
+	#print 'file_name' , file_name
 	file_names.append(file_name)
 	# extract the class label from the image path and update the labels
 	label = imagePath.split(os.path.sep)[-2]
-        print "label 1:" , label
+        #print "label 1:" , label
 	label = 1 if label == tag else 0
-        print "label 2:" , label
+        #print "label 2:" , label
 	labels.append(label)
 
     data = np.array(data, dtype="float32") / 255.0

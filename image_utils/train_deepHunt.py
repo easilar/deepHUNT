@@ -7,12 +7,15 @@ matplotlib.use("Agg")
 
 # import the necessary packages
 from keras.optimizers import Adam
+from keras import callbacks
+from keras.callbacks import TensorBoard
 from keras import metrics
 from keras.preprocessing.image import ImageDataGenerator
 from keras.preprocessing.image import img_to_array
 from sklearn.model_selection import train_test_split
 from keras.utils import to_categorical
 from deepHunt import deepHunt
+from metrics_helper import evaluate as meval
 from imutils import paths
 import matplotlib.pyplot as plt
 import numpy as np
@@ -20,6 +23,7 @@ import argparse
 import random
 import cv2
 import os
+import time
 
 import pickle
 from ploting_helper import Plot_lossAccuracy
@@ -27,8 +31,10 @@ from helper import imageToarray
 
 import configure as conf
 
-data_and_labels_dict = pickle.load(file(conf.pickle_path))
-data , labels = data_and_labels_dict["data"] , data_and_labels_dict["labels"] 
+import h5py    
+
+f1 = h5py.File('hdf5/dataset.hdf5','r+')
+data , labels = f1['data'] , f1['labels']
 print len(data) , len(labels)
 
 (trainX, testX, trainY, testY) = train_test_split(data, labels, test_size=0.30, random_state=42)
@@ -49,11 +55,25 @@ opt = Adam(lr=conf.INIT_LR, decay=conf.INIT_LR / conf.EPOCHS) #optimizer
 model.compile(loss="binary_crossentropy", optimizer=opt,
 	metrics=["accuracy",metrics.mae,metrics.categorical_accuracy,'binary_accuracy'])
 
+
+#tbCallBack = callbacks.TensorBoard(log_dir='logs/log_noPh, histogram_freq=0,  
+#          write_graph=True, write_images=True)
+tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()))
 # train the network
 print("[INFO] training network...")
-H = model.fit_generator(aug.flow(trainX, trainY, batch_size=conf.BS),
-	validation_data=(testX, testY), steps_per_epoch=len(trainX) // conf.BS,
-	epochs=conf.EPOCHS, verbose=1)
+#H = model.fit_generator(aug.flow(trainX, trainY, batch_size=conf.BS),
+#	validation_data=(testX, testY),
+#	steps_per_epoch=len(trainX) // conf.BS,
+#	epochs=conf.EPOCHS,
+#	verbose=1,
+#	callbacks=[tensorboard])
+
+H = model.fit(aug.flow(trainX, trainY, batch_size=conf.BS),
+        validation_data=(testX, testY),
+        steps_per_epoch=len(trainX) // conf.BS,
+        epochs=conf.EPOCHS,
+        verbose=1,
+        callbacks=[tensorboard])
 
 # save the model to disk
 print("[INFO] serializing network...")
