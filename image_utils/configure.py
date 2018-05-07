@@ -3,13 +3,14 @@ import os , sys
 tag = "toxic"
 
 #original dataset
-dataset_sdf_file = 'sdf_utils/data/Eleni_mulliner_curated_w_ID.sdf' 
-nOrig_toxic = 518
-nOrig_nontoxic = 1323
+#dataset_sdf_file = 'sdf_utils/data/Eleni_mulliner_curated_w_ID.sdf' 
+dataset_sdf_file = 'sdf_utils/data/ece_cholo.sdf' 
+nOrig_toxic = 338
+nOrig_nontoxic = 1363
 
 #IO
 sizeX , sizeY = 256, 256
-dataset = "../data/images_noPh/"
+dataset = "../data/Cholo/"
 pickle_path = "pickles/data_labels_"+str(sizeX)+"_from"+dataset.split('/')[2]+"_pkl" 
 picle_dir = "pickles"
 if not os.path.exists(picle_dir):
@@ -28,7 +29,7 @@ if not os.path.exists(plot_dir):
 
 # initialize the number of epochs to train for, initial learning rate,
 # and batch size
-EPOCHS = 2
+EPOCHS = 10
 INIT_LR = 1e-3
 BS = 32
 

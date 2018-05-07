@@ -26,7 +26,7 @@ def makeName(*args):
 #get the project table
 pt = maestro.project_table_get()
 print 'length  of all rows in the project table:' , len(pt.all_rows)
-inipath = '../data/images_noPh/not_toxic'
+inipath = '../data/Cholo/toxic'
 if not os.path.exists(inipath):
 	os.makedirs(inipath)
 coloring = surface.ColorBy.partial_charge

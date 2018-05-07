@@ -22,13 +22,18 @@ def getMoleculeFromIndex(molecules,index):
 
 class molecule(object):
 
-	def __init__(self , content, keys):
+	def __init__(self , content, keys, source_code):
 		self.content = content
+		self.source_code = source_code
 		self.__getKeyValuefromMol(keys)
 
 	def getKeyValuefromMol(self, keys):
 		for key in keys:
-			keyval = self.content.split('<'+key+'>')[1].split('\n')[1]
+			print key
+			keyval = self.content.split('<'+key+'>')[1]
+			if self.source_code == 0: keyval = keyval.split('\n')[1]
+			if self.source_code == 1: keyval = keyval
+			
 			exec('self.'+key+'=keyval')
 
 	__getKeyValuefromMol = getKeyValuefromMol

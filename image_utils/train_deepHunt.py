@@ -58,7 +58,7 @@ model = deepHunt.build(width=conf.sizeX, height=conf.sizeY, depth=3, classes=2)
 opt = Adam(lr=conf.INIT_LR, decay=conf.INIT_LR / conf.EPOCHS) #optimizer
 
 model.compile(loss="binary_crossentropy", optimizer=opt,
-	metrics=["accuracy",metrics.mae,metrics.categorical_accuracy,'binary_accuracy',precision , sensitivity, specificity, accuracy, bal_acc, fpr, fnr, fmeasure, mcc, youden, AUC, gmean])
+	metrics=["accuracy",metrics.mae,metrics.categorical_accuracy,'binary_accuracy',precision , sensitivity, specificity, accuracy, bal_acc, fpr, fnr, fmeasure, mcc, youden, gmean])
 
 #tbCallBack = callbacks.TensorBoard(log_dir='logs/log_noPh, histogram_freq=0,  
 #          write_graph=True, write_images=True)
