@@ -31,17 +31,17 @@ import configure as conf
 
 import h5py    
 
-f1 = h5py.File('hdf5/dataset.hdf5','r+')
-data , labels = f1['data'][()] , f1['labels'][()]
-print len(data) , len(labels)
-print type(data) , type(labels)
+f1 = h5py.File('hdf5/train_test.hdf5','r+')
+#data , labels = f1['data'][()] , f1['labels'][()]
+#print len(data) , len(labels)
+#print type(data) , type(labels)
 
-val_data = data[:28362]
-val_labels = labels[:28362]
-data_ = data[28362:]
-labels_ = labels[28362:]
+#(trainX, testX, trainY, testY) = train_test_split(data_, labels_, test_size=0.30, random_state=42)
 
-(trainX, testX, trainY, testY) = train_test_split(data_, labels_, test_size=0.30, random_state=42)
+trainX = f1['trainX'][()] 
+trainY = f1['trainY'][()] 
+testX  = f1['testX'][()] 
+testY  = f1['testY'][()] 
 
 # convert the labels from integers to vectors
 trainY = to_categorical(trainY, num_classes=2)
@@ -77,7 +77,7 @@ model.fit_generator(aug.flow(trainX, trainY, batch_size=conf.BS),
 
 # save the model to disk
 print("[INFO] serializing network...")
-model.save(conf.models_dir+"/"+conf.tag+"no"+conf.tag+str(conf.sizeX)+"noPh.model")
+model.save(conf.models_dir+"/"+conf.tag+"no"+conf.tag+str(conf.sizeX)+"_confGen.model")
 
 # plot the training loss and accuracy
 #plots =[\
