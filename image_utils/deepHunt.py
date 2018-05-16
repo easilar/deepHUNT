@@ -1,16 +1,18 @@
 # import the necessary packages
-import keras
-from keras.models import Sequential
-from keras.layers.convolutional import Conv2D
-from keras.layers.convolutional import MaxPooling2D
-from keras.layers.core import Activation
-from keras.layers.core import Flatten
-from keras.layers.core import Dense
-from keras import backend as K
+import tensorflow as tf
+Sequential = tf.keras.models.Sequential
+Conv2D = tf.keras.layers.Convolution2D
+MaxPooling2D = tf.keras.layers.MaxPooling2D
+Activation = tf.keras.layers.Activation
+Flatten = tf.keras.layers.Flatten
+Dense = tf.keras.layers.Dense
 
 class deepHunt:
+
 	@staticmethod
-        def build(width, height, depth, classes): #classes : n total of classes we want to recognize
+
+	def build(width, height, depth, classes): 
+		#classes : n total of classes we want to recognize
 		# initialize the model
 		model = Sequential()
 		inputShape = (height, width, depth)   # depth 1 for gray scale , 2 for rgb

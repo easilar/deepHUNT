@@ -11,7 +11,7 @@ from keras.callbacks import TensorBoard
 from keras import metrics
 from keras.preprocessing.image import ImageDataGenerator , img_to_array
 from sklearn.model_selection import train_test_split
-from keras.utils import to_categorical
+from keras.utils import to_categorical, multi_gpu_model
 from deepHunt import deepHunt
 from metric_helper import precision , sensitivity, specificity, accuracy, bal_acc, fpr, fnr, fmeasure, mcc, youden, AUC, gmean
 from imutils import paths
@@ -29,19 +29,6 @@ from helper import imageToarray
 
 import configure as conf
 
-import h5py    
-
-f1 = h5py.File('hdf5/train_test.hdf5','r+')
-#data , labels = f1['data'][()] , f1['labels'][()]
-#print len(data) , len(labels)
-#print type(data) , type(labels)
-
-#(trainX, testX, trainY, testY) = train_test_split(data_, labels_, test_size=0.30, random_state=42)
-
-trainX = f1['trainX'][()] 
-trainY = f1['trainY'][()] 
-testX  = f1['testX'][()] 
-testY  = f1['testY'][()] 
 
 # convert the labels from integers to vectors
 trainY = to_categorical(trainY, num_classes=2)
@@ -54,14 +41,19 @@ aug = ImageDataGenerator(rotation_range=30, width_shift_range=0.1,
 
 # initialize the model
 print("[INFO] compiling model...")
-model = deepHunt.build(width=conf.sizeX, height=conf.sizeY, depth=3, classes=2)
+model_s = deepHunt.build(width=conf.sizeX, height=conf.sizeY, depth=3, classes=2)
 opt = Adam(lr=conf.INIT_LR, decay=conf.INIT_LR / conf.EPOCHS) #optimizer
+
+print (model_s.summary())
+
+model = multi_gpu_model(model_s, gpus=4)
 
 model.compile(loss="binary_crossentropy", optimizer=opt,
 	metrics=["accuracy",metrics.mae,metrics.categorical_accuracy,'binary_accuracy',precision , sensitivity, specificity, accuracy, bal_acc, fpr, fnr, fmeasure, mcc, youden, gmean])
 
 #tbCallBack = callbacks.TensorBoard(log_dir='logs/log_noPh, histogram_freq=0,  
 #          write_graph=True, write_images=True)
+
 tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()),histogram_freq=1,write_graph=True)
 tensorboard.set_model(model)
 

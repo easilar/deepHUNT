@@ -7,7 +7,9 @@ tag = "toxic"
 dataset_sdf_file = 'sdf_utils/data/ece_cholo.sdf' 
 nOrig_toxic = 338
 nOrig_nontoxic = 1363
-
+#dataset hdf5
+test_train = 'hdf5/train_test.hdf5'
+validations = 'hdf5/validations.hdf5'
 #IO
 sizeX , sizeY = 256, 256
 dataset = "../data/Cholo/"
@@ -31,5 +33,5 @@ if not os.path.exists(plot_dir):
 # and batch size
 EPOCHS = 10
 INIT_LR = 1e-3
-BS = 32
+BS = 128 #parallel 4x32
 
