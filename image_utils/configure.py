@@ -31,7 +31,11 @@ if not os.path.exists(plot_dir):
 
 # initialize the number of epochs to train for, initial learning rate,
 # and batch size
-EPOCHS = 10
+EPOCHS = 1
 INIT_LR = 1e-3
-BS = 128 #parallel 4x32
-
+EPOCHSs = (50,100,250)
+INIT_LRs = (1e-3,1e-2,1e-1)
+BS = 128 
+nFilts = [(5,10),(10,20),(20,50)]
+kernSs = [(5,5),(10,10),(20,20)]
+denseLs = [(20),(50),(100),(200),(500)]

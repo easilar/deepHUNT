@@ -25,6 +25,21 @@ class evaluate:
         self.sensitivity = self.tp / (self.tp + self.fn)
         self.specificity = self.tn / (self.tn + self.fp)
 
+def tp(y_true, y_pred):
+	calc_obj = evaluate(y_true, y_pred)
+	return calc_obj.tp 
+def tn(y_true, y_pred):
+	calc_obj = evaluate(y_true, y_pred)
+	return calc_obj.tn
+def fp(y_true, y_pred):
+	calc_obj = evaluate(y_true, y_pred)
+	return calc_obj.fp
+def fn(y_true, y_pred):
+	calc_obj = evaluate(y_true, y_pred)
+	return calc_obj.fn
+
+
+
 def precision(y_true, y_pred):
     calc_obj = evaluate(y_true, y_pred)
     return calc_obj.precision
