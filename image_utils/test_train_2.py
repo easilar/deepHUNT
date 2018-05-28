@@ -25,7 +25,7 @@ aug = ImageDataGenerator(rotation_range=30, width_shift_range=0.1,
 
 #initialize the model
 print("[INFO] compiling model...")
-from deepHunt import deepHunt
+from deepHunt import deepHunt , deepHunt_3Conv
 Adam = tf.keras.optimizers.Adam
 
 from metric_helper import precision , sensitivity, specificity, accuracy, bal_acc, fpr, fnr, fmeasure, mcc, youden, AUC , gmean , auc_roc , tp , tn, fp , fn
@@ -34,9 +34,9 @@ import time
 INIT_LR = conf.INIT_LR
 EPOCHS = conf.EPOCHS
 
-model_save_name = '_2layer_'
+model_save_name = '_3layer_'
 
-model_s = deepHunt.build(width=conf.sizeX, height=conf.sizeY, depth=3, classes=2)
+model_s = deepHunt_3Conv.build(width=conf.sizeX, height=conf.sizeY, depth=3, classes=2)
 
 print (model_s.summary())
 
@@ -68,54 +68,7 @@ model.save("models_afterfit/"+conf.tag+"no"+conf.tag+str(conf.sizeX)+'_'+model_s
 model.save_weights("models_afterfit/weights"+conf.tag+"no"+conf.tag+str(conf.sizeX)+'_'+model_save_name+"_confGen_multiGPU.h5")
 
 
-import numpy as np
-from sklearn.metrics import confusion_matrix , matthews_corrcoef , classification_report, roc_curve , auc 
 
-def call_metrics(y_true, y_pred):
-	#classification_report = classification_report(y_true, y_pred)
-	#print('classification_report:')
-	#print(classification_report)
-	cm = confusion_matrix(y_true, y_pred)
-	print('cm:',cm)
-	tn, fp, fn, tp = cm.ravel()
-	specificity = tn / (tn+fp)
-	sensitivity = tp / (tp+fn)
-	print('specificity:' , specificity)
-	print('sensitivity:' , sensitivity)
-	mcc = matthews_corrcoef(y_true, y_pred)
-	print('mcc:' , mcc)
-	#fpr, tpr, thresholds = roc_curve(y_true, y_pred, pos_label=2)
-	#print('fpr:' , fpr, 'tpr:' , tpr)
-	#auc = auc(fpr, tpr)
-	#print('auc:' , auc)
-	return
-
-
-print('Evaluation of the model: test region , validation 1 and validation 2 regions ...')
-
-print('Evaluation of the model: test region')
-# Predicting the Test set results
-y_pred = model.predict(data_.testX, verbose=2)
-y_pred = np.argmax(y_pred, axis=1)
-y_true = np.argmax(data_.testY,axis=1)
-
-call_metrics(y_true, y_pred)
-
-print('Evaluation of the model: validation 1')
-
-y_pred = model.predict(data_val.val1_X, verbose=2)
-y_pred = np.argmax(y_pred, axis=1)
-y_true = np.argmax(data_val.val1_Y,axis=1)
-
-call_metrics(y_true, y_pred)
-
-print('Evaluation of the model: validation 2')
-
-y_pred = model.predict(data_val.val2_X, verbose=2)
-y_pred = np.argmax(y_pred, axis=1)
-y_true = np.argmax(data_val.val2_Y,axis=1)
-
-call_metrics(y_true, y_pred)
 
 #
 ## train the network
