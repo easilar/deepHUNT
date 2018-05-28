@@ -20,21 +20,18 @@ class deepHunt:
 
 		# first set of CONV => RELU => POOL layers
 		# n convolutional filters, each of which are mXm 
-		model.add(Conv2D(20, kernel_size=(11,11), input_shape=inputShape))
+		model.add(Conv2D(20, kernel_size=(5,5), input_shape=inputShape))
 		model.add(Activation("relu"))
 		model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-		model.add(Dropout(0.25))
 
-		model.add(Conv2D(50, kernel_size=(11,11)))
+		model.add(Conv2D(50, kernel_size=(5,5)))
 		model.add(Activation("relu"))
 		model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-		model.add(Dropout(0.25))
 
 		# first (and only) set of FC => RELU layers
 		model.add(Flatten()) # flatten it into a single vector
-		model.add(Dense(50))
+		model.add(Dense(500))
 		model.add(Activation("relu"))
-		model.add(Dropout(0.5))
 
 		# softmax classifier
 		model.add(Dense(classes)) # the number of nodes is equal to the number of classes , which is 2 in my case 

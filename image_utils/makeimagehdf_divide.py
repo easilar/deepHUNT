@@ -19,7 +19,7 @@ random.seed(42)
 random.shuffle(imagePaths)
 
 
-splitFac=(0.3,0.2,0.5)
+splitFac=(0.1,0.1,0.3)
 
 datasets = {}
 
@@ -48,7 +48,7 @@ val1_block =datasets["val1_block"]
 val2_block =datasets["val2_block"]
 
 
-data_file_1 = h5py.File('hdf5/train_test.hdf5', 'w')
+data_file_1 = h5py.File(conf.test_train, 'w')
 print('Saving train/test ...')
 data_file_1.create_dataset('trainX',data=train_block['data'])
 data_file_1.create_dataset('trainY',data=train_block['labels'])
@@ -56,7 +56,7 @@ data_file_1.create_dataset('testX',data=test_block['data'])
 data_file_1.create_dataset('testY',data=test_block['labels'])
 data_file_1.close()
 
-data_file_2 = h5py.File('hdf5/validations.hdf5', 'w')
+data_file_2 = h5py.File(conf.validations, 'w')
 print('Saving Validation ...')
 data_file_2.create_dataset('val1_X',data=val1_block['data'])
 data_file_2.create_dataset('val1_Y',data=val1_block['labels'])

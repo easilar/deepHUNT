@@ -7,11 +7,14 @@ tag = "toxic"
 dataset_sdf_file = 'sdf_utils/data/ece_cholo.sdf' 
 nOrig_toxic = 338
 nOrig_nontoxic = 1363
-#dataset hdf5
-test_train = 'hdf5/train_test.hdf5'
-validations = 'hdf5/validations.hdf5'
 #IO
-sizeX , sizeY = 256, 256
+
+sizeX , sizeY = 64, 64
+
+##dataset hdf5
+test_train = 'hdf5/train_test_'+str(sizeX)+'_.hdf5'
+validations = 'hdf5/validations_'+str(sizeX)+'_.hdf5'
+
 dataset = "../data/Cholo/"
 pickle_path = "pickles/data_labels_"+str(sizeX)+"_from"+dataset.split('/')[2]+"_pkl" 
 picle_dir = "pickles"
@@ -31,11 +34,11 @@ if not os.path.exists(plot_dir):
 
 # initialize the number of epochs to train for, initial learning rate,
 # and batch size
-EPOCHS = 1
+EPOCHS = 10
 INIT_LR = 1e-3
 EPOCHSs = (50,100,250)
 INIT_LRs = (1e-3,1e-2,1e-1)
-BS = 128 
+BS = 128
 nFilts = [(5,10),(10,20),(20,50)]
 kernSs = [(5,5),(10,10),(20,20)]
 denseLs = [(20),(50),(100),(200),(500)]
