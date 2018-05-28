@@ -119,3 +119,21 @@ def auc_roc(y_true, y_pred):
         value = tf.identity(value)
         return value
 
+
+def call_sk_metrics(y_true, y_pred):
+	y_pred_prob =  y_pred[:,1]
+	y_pred = np.argmax(y_pred, axis=1)
+	cm = sk_metrics.confusion_matrix(y_true, y_pred)
+	print('cm:',cm)
+	tn, fp, fn, tp = cm.ravel()
+	specificity = tn / (tn+fp)
+	sensitivity = tp / (tp+fn)
+	print('specificity:' , specificity)
+	print('sensitivity:' , sensitivity)
+	mcc = sk_metrics.matthews_corrcoef(y_true, y_pred)
+	print('mcc:' , mcc)
+	print('auc score:' , sk_metrics.roc_auc_score(y_true, y_pred_prob))
+	return
+
+
+

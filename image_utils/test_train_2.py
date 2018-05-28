@@ -34,7 +34,7 @@ import time
 INIT_LR = conf.INIT_LR
 EPOCHS = conf.EPOCHS
 
-#model_save_name = '_'.join([str(nFilt[0]),str(nFilt[1]),str(kernS[0]),str(denseL),str(INIT_LR),str(EPOCHS)])
+model_save_name = '_2layer_'
 
 model_s = deepHunt.build(width=conf.sizeX, height=conf.sizeY, depth=3, classes=2)
 
@@ -55,6 +55,17 @@ model.compile(loss="binary_crossentropy", optimizer=opt,
 
 model.fit(data_.trainX, data_.trainY, batch_size = conf.BS, nb_epoch = EPOCHS)
 
+
+print('tensorboard stage ... ')
+TensorBoard =  tf.keras.callbacks.TensorBoard
+tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()),histogram_freq=1,write_graph=True)
+tensorboard.set_model(model)
+
+
+# save the model to disk
+print("[INFO] serializing network...")
+model.save("models_afterfit/"+conf.tag+"no"+conf.tag+str(conf.sizeX)+'_'+model_save_name+"_confGen_multiGPU.h5")
+model.save_weights("models_afterfit/weights"+conf.tag+"no"+conf.tag+str(conf.sizeX)+'_'+model_save_name+"_confGen_multiGPU.h5")
 
 
 import numpy as np
@@ -106,10 +117,6 @@ y_true = np.argmax(data_val.val2_Y,axis=1)
 
 call_metrics(y_true, y_pred)
 
-#print('tensorboard stage ... ')
-#TensorBoard =  tf.keras.callbacks.TensorBoard
-#tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()),histogram_freq=1,write_graph=True)
-#tensorboard.set_model(model)
 #
 ## train the network
 #print("[INFO] training network...")
