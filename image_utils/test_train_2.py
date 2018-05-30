@@ -27,6 +27,7 @@ aug = ImageDataGenerator(rotation_range=30, width_shift_range=0.1,
 print("[INFO] compiling model...")
 from deepHunt import deepHunt , deepHunt_3Conv
 Adam = tf.keras.optimizers.Adam
+#sgd = tf.keras.optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9,nesterov=True)
 
 from metric_helper import precision , sensitivity, specificity, accuracy, bal_acc, fpr, fnr, fmeasure, mcc, youden, AUC , gmean , auc_roc , tp , tn, fp , fn
 import time
@@ -34,9 +35,9 @@ import time
 INIT_LR = conf.INIT_LR
 EPOCHS = conf.EPOCHS
 
-model_save_name = '_3layer_'
+model_save_name = '_2layer_aug_'
 
-model_s = deepHunt_3Conv.build(width=conf.sizeX, height=conf.sizeY, depth=3, classes=2)
+model_s = deepHunt.build(width=conf.sizeX, height=conf.sizeY, depth=3, classes=2)
 
 print (model_s.summary())
 
@@ -48,18 +49,25 @@ print('model compile and get metrics')
 mae = tf.keras.metrics.mean_absolute_error
 categorical_accuracy = tf.keras.metrics.categorical_accuracy
 opt = Adam(lr=INIT_LR, decay=INIT_LR/EPOCHS) #optimizer
+#opt = sgd
 
 model.compile(loss="binary_crossentropy", optimizer=opt,
 	metrics=["accuracy"])
 
+#print('tensorboard stage ... ')
+#TensorBoard =  tf.keras.callbacks.TensorBoard
+#tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()),histogram_freq=1,write_graph=True)
+#tensorboard.set_model(model)
 
-model.fit(data_.trainX, data_.trainY, batch_size = conf.BS, nb_epoch = EPOCHS)
+#model.fit(data_.trainX, data_.trainY, batch_size = conf.BS, nb_epoch = EPOCHS)
 
+print("[INFO] training network...")
+model.fit_generator(aug.flow(data_.trainX, data_.trainY, batch_size=conf.BS),
+	validation_data=(data_.testX, data_.testY),
+	steps_per_epoch=data_.ntrainX // conf.BS,
+	epochs=EPOCHS,
+	verbose=1)
 
-print('tensorboard stage ... ')
-TensorBoard =  tf.keras.callbacks.TensorBoard
-tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()),histogram_freq=1,write_graph=True)
-tensorboard.set_model(model)
 
 
 # save the model to disk
@@ -95,7 +103,7 @@ model.save_weights("models_afterfit/weights"+conf.tag+"no"+conf.tag+str(conf.siz
 #tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()),histogram_freq=1,write_graph=True)
 #tensorboard.set_model(model)
 #
-## train the network
+# train the network
 #print("[INFO] training network...")
 #model.fit_generator(aug.flow(data_.trainX, data_.trainY, batch_size=conf.BS),
 #	validation_data=(data_.testX, data_.testY),

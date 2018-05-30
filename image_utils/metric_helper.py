@@ -132,8 +132,9 @@ def call_sk_metrics(y_true, y_pred):
 	print('sensitivity:' , sensitivity)
 	mcc = sk_metrics.matthews_corrcoef(y_true, y_pred)
 	print('mcc:' , mcc)
-	print('auc score:' , sk_metrics.roc_auc_score(y_true, y_pred_prob))
-	return
+	auc = sk_metrics.roc_auc_score(y_true, y_pred_prob)
+	print('auc score:' , auc)
+	return {'specificity':specificity, 'sensitivity':sensitivity , 'mcc':mcc, 'auc': auc}
 
 
 
