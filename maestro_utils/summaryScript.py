@@ -14,8 +14,8 @@ def rotate_by(by = 90):
 
 def savePng(nrow , i=-1, angle=0):
 	#Capture the current main structure window and save to an image file.
-	maestro.command('saveimage format=%s %s' % ('png', 'images/toxic/mol_'+str(nrow)+'_'+str(i)+'_'+str(angle)))
-	print 'image saved: ' , 'images/toxic/mol_'+str(nrow)+'_'+str(i)+'_'+str(angle)
+	maestro.command('saveimage format=%s %s' % ('png', 'images/nottoxic/mol_'+str(nrow)+'_'+str(i)+'_'+str(angle)))
+	print 'image saved: ' , 'images/nottoxic/mol_'+str(nrow)+'_'+str(i)+'_'+str(angle)
 
 def makeName(*args):
 	return '_'.join(str(k) for k in args if k is not None)
