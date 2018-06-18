@@ -128,13 +128,17 @@ def call_sk_metrics(y_true, y_pred):
 	tn, fp, fn, tp = cm.ravel()
 	specificity = tn / (tn+fp)
 	sensitivity = tp / (tp+fn)
+	acc = (tp+tn)/(tp+tn+fn+fp)
+	bal_acc = 0.5*(tp/(tp+fn))+0.5*(tn/(tn+fp))
+	prec = tp / (tp+fn)
+	f_mes = 2*tp/((2*tp+fp+fn))
 	print('specificity:' , specificity)
 	print('sensitivity:' , sensitivity)
 	mcc = sk_metrics.matthews_corrcoef(y_true, y_pred)
 	print('mcc:' , mcc)
 	auc = sk_metrics.roc_auc_score(y_true, y_pred_prob)
 	print('auc score:' , auc)
-	return {'specificity':specificity, 'sensitivity':sensitivity , 'mcc':mcc, 'auc': auc}
+	return {'specificity':specificity, 'sensitivity':sensitivity , 'acc':acc , 'bal_acc':bal_acc , 'f_mesure':f_mes ,'precision':prec,'mcc':mcc, 'auc': auc}
 
 
 

@@ -1,0 +1,607 @@
+[nH]1nc(cc1)CCN
+  MOE2013           2D
+
+  8  8  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4700   -0.2990    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2090    1.0060    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.1950    2.1120    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.1700    1.4900    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6990    1.1760    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.5910   -0.0300    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.0810    0.1390    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  1  5  1  0  0  0  0
+  2  3  2  0  0  0  0
+  3  4  1  0  0  0  0
+  3  6  1  0  0  0  0
+  4  5  2  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+M  END
+>  <Index>
+139
+
+>  <ID>
+HT0276
+
+>  <class>
+0
+
+>  <apol>
+18.101137
+
+>  <ast_fraglike>
+1
+
+>  <ast_fraglike_ext>
+1
+
+>  <ast_violation>
+0
+
+>  <ast_violation_ext>
+0
+
+>  <a_acc>
+3
+
+>  <a_acid>
+0
+
+>  <a_aro>
+5
+
+>  <a_base>
+0
+
+>  <a_count>
+17
+
+>  <a_don>
+3
+
+>  <a_donacc>
+6
+
+>  <a_heavy>
+8
+
+>  <a_hyd>
+5
+
+>  <a_IC>
+24.593016
+
+>  <a_ICM>
+1.446648
+
+>  <a_nB>
+0
+
+>  <a_nBr>
+0
+
+>  <a_nC>
+5
+
+>  <a_nCl>
+0
+
+>  <a_nF>
+0
+
+>  <a_nH>
+9
+
+>  <a_nI>
+0
+
+>  <a_nN>
+3
+
+>  <a_nO>
+0
+
+>  <a_nP>
+0
+
+>  <a_nS>
+0
+
+>  <balabanJ>
+2.1032672
+
+>  <BCUT_PEOE_0>
+-2.4530895
+
+>  <BCUT_PEOE_1>
+-0.51671743
+
+>  <BCUT_PEOE_2>
+0.66077691
+
+>  <BCUT_PEOE_3>
+2.4211812
+
+>  <BCUT_SLOGP_0>
+-2.6655643
+
+>  <BCUT_SLOGP_1>
+-0.4762359
+
+>  <BCUT_SLOGP_2>
+0.69477385
+
+>  <BCUT_SLOGP_3>
+2.3662038
+
+>  <BCUT_SMR_0>
+-2.1959734
+
+>  <BCUT_SMR_1>
+-0.38067171
+
+>  <BCUT_SMR_2>
+0.80666846
+
+>  <BCUT_SMR_3>
+2.6745064
+
+>  <bpol>
+9.8388634
+
+>  <b_1rotN>
+2
+
+>  <b_1rotR>
+0.25
+
+>  <b_ar>
+5
+
+>  <b_count>
+17
+
+>  <b_double>
+0
+
+>  <b_heavy>
+8
+
+>  <b_max1len>
+4
+
+>  <b_rotN>
+2
+
+>  <b_rotR>
+0.25
+
+>  <b_single>
+12
+
+>  <b_triple>
+0
+
+>  <chi0>
+5.8199911
+
+>  <chi0v>
+4.5934782
+
+>  <chi0v_C>
+3.0689142
+
+>  <chi0_C>
+3.4057775
+
+>  <chi1>
+3.9318516
+
+>  <chi1v>
+2.6196988
+
+>  <chi1v_C>
+1.4755619
+
+>  <chi1_C>
+1.8164966
+
+>  <chiral>
+0
+
+>  <chiral_u>
+0
+
+>  <density>
+0.71320724
+
+>  <diameter>
+5
+
+>  <FCharge>
+0
+
+>  <GCUT_PEOE_0>
+-0.84618807
+
+>  <GCUT_PEOE_1>
+-0.35907561
+
+>  <GCUT_PEOE_2>
+0.097053267
+
+>  <GCUT_PEOE_3>
+2.0297685
+
+>  <GCUT_SLOGP_0>
+-1.3632443
+
+>  <GCUT_SLOGP_1>
+-0.32317597
+
+>  <GCUT_SLOGP_2>
+0.15669107
+
+>  <GCUT_SLOGP_3>
+2.0307646
+
+>  <GCUT_SMR_0>
+-0.50819385
+
+>  <GCUT_SMR_1>
+-0.19202657
+
+>  <GCUT_SMR_2>
+0.21381836
+
+>  <GCUT_SMR_3>
+2.2825766
+
+>  <Kier1>
+6.125
+
+>  <Kier2>
+3.1111112
+
+>  <Kier3>
+1.8
+
+>  <KierA1>
+4.4656997
+
+>  <KierA2>
+2.1498282
+
+>  <KierA3>
+1.1859028
+
+>  <KierFlex>
+1.2000608
+
+>  <lip_acc>
+3
+
+>  <lip_don>
+3
+
+>  <lip_druglike>
+1
+
+>  <lip_violation>
+0
+
+>  <logP(o/w)>
+-0.193
+
+>  <logS>
+0.29977
+
+>  <mr>
+3.1998668
+
+>  <mutagenic>
+0
+
+>  <nmol>
+1
+
+>  <opr_brigid>
+5
+
+>  <opr_leadlike>
+1
+
+>  <opr_nring>
+1
+
+>  <opr_nrot>
+2
+
+>  <opr_violation>
+0
+
+>  <PC+>
+0
+
+>  <PC->
+0
+
+>  <PEOE_PC+>
+0.81560838
+
+>  <PEOE_PC->
+-0.81560838
+
+>  <PEOE_RPC+>
+0.23073648
+
+>  <PEOE_RPC->
+0.40414092
+
+>  <PEOE_VSA+0>
+42.508774
+
+>  <PEOE_VSA+1>
+15.230323
+
+>  <PEOE_VSA+2>
+17.238026
+
+>  <PEOE_VSA+3>
+8.6190128
+
+>  <PEOE_VSA+4>
+0
+
+>  <PEOE_VSA+5>
+0
+
+>  <PEOE_VSA+6>
+0
+
+>  <PEOE_VSA-0>
+25.447229
+
+>  <PEOE_VSA-1>
+0
+
+>  <PEOE_VSA-2>
+0
+
+>  <PEOE_VSA-3>
+9.4210396
+
+>  <PEOE_VSA-4>
+0
+
+>  <PEOE_VSA-5>
+3.8753545
+
+>  <PEOE_VSA-6>
+6.6511192
+
+>  <PEOE_VSA_FHYD>
+0.91839367
+
+>  <PEOE_VSA_FNEG>
+0.35192212
+
+>  <PEOE_VSA_FPNEG>
+0.081606343
+
+>  <PEOE_VSA_FPOL>
+0.081606343
+
+>  <PEOE_VSA_FPOS>
+0.64807791
+
+>  <PEOE_VSA_FPPOS>
+0
+
+>  <PEOE_VSA_HYD>
+118.4644
+
+>  <PEOE_VSA_NEG>
+45.394741
+
+>  <PEOE_VSA_PNEG>
+10.526474
+
+>  <PEOE_VSA_POL>
+10.526474
+
+>  <PEOE_VSA_POS>
+83.596138
+
+>  <PEOE_VSA_PPOS>
+0
+
+>  <petitjean>
+0.40000001
+
+>  <petitjeanSC>
+0.66666669
+
+>  <Q_PC+>
+0
+
+>  <Q_PC->
+0
+
+>  <Q_RPC+>
+0
+
+>  <Q_RPC->
+0
+
+>  <Q_VSA_FHYD>
+1
+
+>  <Q_VSA_FNEG>
+0
+
+>  <Q_VSA_FPNEG>
+0
+
+>  <Q_VSA_FPOL>
+0
+
+>  <Q_VSA_FPOS>
+1
+
+>  <Q_VSA_FPPOS>
+0
+
+>  <Q_VSA_HYD>
+128.99088
+
+>  <Q_VSA_NEG>
+0
+
+>  <Q_VSA_PNEG>
+0
+
+>  <Q_VSA_POL>
+0
+
+>  <Q_VSA_POS>
+128.99088
+
+>  <Q_VSA_PPOS>
+0
+
+>  <radius>
+3
+
+>  <reactive>
+0
+
+>  <rings>
+1
+
+>  <RPC+>
+0
+
+>  <RPC->
+0
+
+>  <rsynth>
+1
+
+>  <SlogP>
+-0.089129999
+
+>  <SlogP_VSA0>
+32.897186
+
+>  <SlogP_VSA1>
+16.663008
+
+>  <SlogP_VSA2>
+16.663008
+
+>  <SlogP_VSA3>
+18.439579
+
+>  <SlogP_VSA4>
+2.7567475
+
+>  <SlogP_VSA5>
+18.868406
+
+>  <SlogP_VSA6>
+0
+
+>  <SlogP_VSA7>
+34.85754
+
+>  <SlogP_VSA8>
+0
+
+>  <SlogP_VSA9>
+0
+
+>  <SMR>
+3.1346099
+
+>  <SMR_VSA0>
+0
+
+>  <SMR_VSA1>
+16.663008
+
+>  <SMR_VSA2>
+16.663008
+
+>  <SMR_VSA3>
+2.7567475
+
+>  <SMR_VSA4>
+32.897186
+
+>  <SMR_VSA5>
+53.725948
+
+>  <SMR_VSA6>
+18.439579
+
+>  <SMR_VSA7>
+0
+
+>  <TPSA>
+54.700001
+
+>  <VAdjEq>
+0.8112781
+
+>  <VAdjMa>
+4
+
+>  <VDistEq>
+2.1595347
+
+>  <VDistMa>
+5.6184216
+
+>  <vdw_area>
+128.99088
+
+>  <vdw_vol>
+155.8425
+
+>  <vsa_acc>
+0
+
+>  <vsa_acid>
+0
+
+>  <vsa_base>
+0
+
+>  <vsa_don>
+0
+
+>  <vsa_hyd>
+78.91555
+
+>  <vsa_other>
+0
+
+>  <vsa_pol>
+36.584568
+
+>  <Weight>
+111.14799
+
+>  <weinerPath>
+67
+
+>  <weinerPol>
+5
+
+>  <zagreb>
+34
+
+$$$$

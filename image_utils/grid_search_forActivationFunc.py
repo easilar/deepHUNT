@@ -36,9 +36,9 @@ RMSprop = tf.keras.optimizers.RMSprop
 
 multi_gpu_model = tf.keras.utils.multi_gpu_model
 
-def create_model(actFunc = 'relu', init_mode='random_uniform', lr=0.01, momentum=0.9, optimizer='Adam', width=conf.sizeX, height=conf.sizeY):
+def create_model(inmodel = deepHunt, actFunc = 'relu', init_mode='random_uniform', lr=0.01, momentum=0.9, optimizer='Adam', width=conf.sizeX, height=conf.sizeY):
 	#get model
-	model_s = deepHunt.build(width, height, depth=3, classes=2, init_mode=init_mode, actFunc=actFunc)
+	model_s = inmodel.build(width, height, depth=3, classes=2, init_mode=init_mode, actFunc=actFunc)
 	print (model_s.summary())
 	#make multi gpu available
 	model = multi_gpu_model(model_s, gpus=4)
