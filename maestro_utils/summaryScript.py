@@ -14,7 +14,7 @@ def rotate_by(by = 90):
 
 def savePng(inipath):
 	#Capture the current main structure window and save to an image file.
-	maestro.command('saveimage format=%s %s' % ('jpeg', inipath))
+	maestro.command('saveimage format=%s %s' % ('jpeg', inipath+'.jpeg'))
 	print 'image saved: ' , inipath
 
 def makePath(inipath, name):
@@ -26,12 +26,14 @@ def makeName(*args):
 #get the project table
 pt = maestro.project_table_get()
 print 'length  of all rows in the project table:' , len(pt.all_rows)
-inipath = '../data/Cholo/toxic'
+
+inipath = '/home/ecea/Artemis/deepHunt/data/Muliner/fold1/not_toxic'
 if not os.path.exists(inipath):
 	os.makedirs(inipath)
+
 coloring = surface.ColorBy.partial_charge
 surfStyle = surface.Style.dot
-nStep = 8 
+nStep = 7 
 angle = 45 # angle for each step
 iterable = pt.all_rows
 prefix = 'Surf'
@@ -42,6 +44,7 @@ for row in iterable:
 	title = row.title
 	nrow = row.row_number
 	print 'number of current row: ' , nrow
+	#if nrow < 51:	continue
 	save_name = makeName('mol',title,nrow,-1,0)
 	fin_path = makePath(inipath, name = save_name)
 	savePng(fin_path)
