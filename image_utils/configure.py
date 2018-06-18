@@ -2,10 +2,21 @@ import os , sys
 #what to catecorise
 tag = "toxic"
 
+#original dataset
+#dataset_sdf_file = 'sdf_utils/data/Eleni_mulliner_curated_w_ID.sdf' 
+dataset_sdf_file = 'sdf_utils/data/ece_cholo.sdf' 
+nOrig_toxic = 338
+nOrig_nontoxic = 1363
 #IO
-sizeX , sizeY = 28, 28
-dataset = "images"
-pickle_path = "pickles/data_labels_"+str(sizeX)+"_pkl" 
+
+sizeX , sizeY = 64, 64
+
+##dataset hdf5
+test_train = 'hdf5/train_test_'+str(sizeX)+'_.hdf5'
+validations = 'hdf5/validations_'+str(sizeX)+'_.hdf5'
+
+dataset = "../data/Cholo/"
+pickle_path = "pickles/data_labels_"+str(sizeX)+"_from"+dataset.split('/')[2]+"_pkl" 
 picle_dir = "pickles"
 if not os.path.exists(picle_dir):
       os.makedirs(picle_dir)
@@ -25,5 +36,9 @@ if not os.path.exists(plot_dir):
 # and batch size
 EPOCHS = 10
 INIT_LR = 1e-3
-BS = 32
-
+EPOCHSs = (50,100,250)
+INIT_LRs = (1e-3,1e-2,1e-1)
+BS = 128
+nFilts = [(5,10),(10,20),(20,50)]
+kernSs = [(5,5),(10,10),(20,20)]
+denseLs = [(20),(50),(100),(200),(500)]

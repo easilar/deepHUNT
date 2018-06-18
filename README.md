@@ -34,5 +34,10 @@ This will open an ipython shell <br />
 ```sh
 execfile('maestro_utils/summaryScript.py')
 ```
-
-
+If you accidently commit huges files, do this:
+<br />
+```sh
+git rm --cached <hugefile>
+git commit --amend -CHEAD
+git push dhunt localmaster
+```

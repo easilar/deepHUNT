@@ -3,5 +3,6 @@ from helper import imageToarray , makeDataAndLabels , makePickle
 
 import configure as conf
 
-data , labels = makeDataAndLabels(conf.dataset, conf.tag, sizeX=conf.sizeX , sizeY=conf.sizeY)
-makePickle(data , labels, conf.pickle_path)
+data , labels , file_names = makeDataAndLabels(dataset=conf.dataset, tag=conf.tag, sizeX=conf.sizeX , sizeY=conf.sizeY)
+
+makePickle(data = data , labels = labels, file_names = file_names ,pickle_path = conf.pickle_path)

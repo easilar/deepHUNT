@@ -1,13 +1,15 @@
 import os,sys
 from sdf_utils.python.helper import *
 
-cur_f = 'sdf_utils/data/Eleni_mulliner_curated_w_ID.sdf'
+#cur_f = 'sdf_utils/data/Eleni_mulliner_curated_w_ID.sdf'
+cur_f = 'sdf_utils/data/ece_cholo.sdf'
 
 f1 = readFile(cur_f,printOption=False)
 
 Mols=getMolecules(f1)
 
-data_path = 'sdf_utils/data/categorized/'
+#data_path = 'sdf_utils/data/categorized/'
+data_path = 'sdf_utils/data/categorized_cholo/'
 
 cats = ('notoxic','toxic')
 for path in cats:
@@ -15,7 +17,8 @@ for path in cats:
 	if not os.path.exists(path): os.makedirs(path)
 
 for index, molText in enumerate(Mols[:-1]):
-	mol = molecule(molText[1:],('Inchi_key','Source','ID','H_MFHB','CAS','Cholestasis','Name','Class'))
+	#mol = molecule(molText[1:],('Inchi_key','Source','ID','H_MFHB','CAS','Cholestasis','Name','Class'))
+	mol = molecule(molText[1:],('ID','Class'))
 	print 8*'*'
 	print 'class:' , mol.Class , 'index:' , index 
 	print 8*'*'

@@ -13,6 +13,7 @@
 # Data #
 *.root
 *.pkl
+*_pkl
 *.png
 *.jpeg
 #python specific
